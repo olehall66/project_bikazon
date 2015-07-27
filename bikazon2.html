@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>bikazon</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bikazon.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container"> <!-- header-->
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <a href="bikazon.html" class="btn btn-warning">Page 1</a>
+            <a href="bikazon2.html" class="btn btn-warning">Page 2</a>
+          </nav>
+          <div id="header">Monster Bikazon</div>
+          <div id="welcome_header">Welcome to Bikazon</div>
+        </div>
+      </div>
+
+
+    </div> <!-- header container-->
+    <div class="container"> <!-- main content container-->
+      <div class="row">
+        <div id="main_box" class="col-xs-12">
+
+
+          <div  class="col-xs-3 main_box_style type"><h3 id="artistBox">error</h3>
+            <div><p id="imgTitle">error</p></div>
+              <div id="imgSrc">error</div>
+
+              <div id="imgSize">erroe</div>
+              <div id="printIsAvail">error</div>
+              <div id="origIsAvail">error</div>
+              <div id="list_selling_points">
+                <ul>
+                  <li id="imgDesc">orig error</li>
+                  <li id="prtDesc">print error</li>
+                  <li id="imgPrice">orig error</li>
+                  <li id="imgPrtPrice"> print error</li>
+
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div> <!-- main container-->
+    <div class="container"> <!-- footer-->
+      <div class="row">
+        <div class="col-xs-12">
+          <nav></nav>
+        </div>
+      </div>
+
+    </div> <!-- footer container-->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/bikazondata.js"></script>
+      <script type="text/javascript">
+
+// difinging functions
+
+    var add_to_page= function(imgObject){
+      $('#main_box').append()
+        $('#artistBox').text('Artist: Sam Racina')
+        $('#imgSrc').html('<img id="disp_img" src="'+imgObject.imgSrc+'"/>')
+        $('#imgTitle').text(imgObject.imgTitle)
+          console.log(imgObject.imgTitle)
+        $('#imgSize').text(imgObject.imgSize)
+
+
+        if (imgObject.origIsAvail===true){
+          $('#origIsAvail').text("The Original IS available!").show()
+          $('#imgPrice').text(imgObject.imgPrice).show()
+          $('#imgDesc').text(imgObject.imgDesc).show()
+        }else {
+          $('#origIsAvail').hide()
+          $('#imgPrice').hide()
+          $('#imgDesc').hide()
+        }
+        if (imgObject.printIsAvail===true){
+          $('#printIsAvail').text("A print IS available").show()
+          $('imgPrtPrice').text(imgObject.imgPrtPrice).show()
+          $('#prtDesc').text(imgObject.prtDesc).show()
+        }else{
+          $('#printIsAvail').hide()
+          $('#imgPrtPrice').hide()
+          $('#prtDesc').hide()
+        }
+      }
+
+      // calling functions
+wall_1.forEach(add_to_page);
+
+
+      </script>
+  </body>
+</html>

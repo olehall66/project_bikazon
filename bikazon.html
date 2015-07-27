@@ -2,18 +2,103 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>bikazon lalala</title>
+    <title>bikazon</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/bikazon.css" rel="stylesheet">
   </head>
   <body>
+    <div class="container"> <!-- header-->
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <a href="#" id="originals" class="btn btn-warning">Just Originals</a>
+            <a href="#" id="prints" class="btn btn-warning">Just Prints</a>
+            <a href="#" id="both" class="btn btn-warning">All Works</a>
+            <form method="get"><input class="pull-right" type="submit" value="Go"/>
+            <input id="itemSearch" class="pull-right" type="search" maxlength="30" placeholder="Search" name="searchTerm"/></form>
 
+
+          </nav>
+          <div id="header">Monster Bikazon</div>
+          <div id="welcome_header">Welcome to Bikazon</div>
+        </div>
+      </div>
+
+
+    </div> <!-- header container-->
+    <div class="container"> <!-- main content container-->
+      <div class="row">
+        <div id="main_box" class="col-xs-12">
+        </div>
+      </div>
+    </div> <!-- end main content container-->
+    <div class="container"> <!-- footer-->
+      <div class="row">
+        <div class="col-xs-12">
+          <nav></nav>
+        </div>
+      </div>
+
+    </div> <!-- footer container-->
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="js/bootstrap.min.js"></script>
-å
+      <script src="js/bikazondata.js"></script>
+      <script type="text/javascript">
+
+// difining functions
+    var searchTerm=""
+    var add_to_page= function(imgObject){
+
+    if (row_counter%4===0){$('#main_box').append('<div class="clearfix"></div>')}
+    row_counter++
+    $('#main_box').append('<div id="box_'+imgObject.imgLoc+'" class="col-xs-3 main_box_style type"></div>')
+      $('#box_'+imgObject.imgLoc).append('<h4>Artist: Sam Racina</h4>')
+      $('#box_'+imgObject.imgLoc).append($('<div id="imgTitle_'+imgObject.imgLoc+'"></div>').text(imgObject.imgTitle))
+      $('#box_'+imgObject.imgLoc).append('<img id="disp_img" src="'+imgObject.imgSrc+'"/>')
+      $('#box_'+imgObject.imgLoc).append($('<div id="imgSize_'+imgObject.imgLoc+'"></div>').text(imgObject.imgSize))
+
+      if (imgObject.origIsAvail===true){
+        $('#box_'+imgObject.imgLoc).addClass('original')
+        $('#box_'+imgObject.imgLoc).append($('<div id="isAvail_'+imgObject.imgLoc+'"></div>').text('The Original IS available for:'))
+        $('#box_'+imgObject.imgLoc).append($('<div id="imgPrice_'+imgObject.imgLoc+'"></div>').text(imgObject.imgPrice))
+        $('#box_'+imgObject.imgLoc).append($('<div id="imgDesc_'+imgObject.imgLoc+'"></div>').text(imgObject.imgDesc))
+      }
+      if (imgObject.printIsAvail===true){
+        $('#box_'+imgObject.imgLoc).addClass('print')
+        $('#box_'+imgObject.imgLoc).append($('<div id="isOrigAvail_'+imgObject.imgLoc+'"></div>').text('The Print IS available for:'))
+        $('#box_'+imgObject.imgLoc).append($('<div id="imgPrtPrice_'+imgObject.imgLoc+'"></div>').text(imgObject.imgPrtPrice))
+        $('#box_'+imgObject.imgLoc).append($('<div id="prtDesc_'+imgObject.imgLoc+'"></div>').text(imgObject.prtDesc))
+      }
+}
+
+      // calling functions
+
+for (var x=0;x<=4;x++){
+
+  var row_counter=0;
+  walls[x].forEach(add_to_page);
+}
+
+$('#originals').click(function(){
+  $('.print').hide();
+  $('.original').show();
+})
+$('#prints').click(function(){
+  $('.print').show();
+  $('.original').hide();
+})
+$('#both').click(function(){
+  $('.original').show();
+  $('.print').show();
+})
+console.log(searchTerm)
+alert(searchTerm)
+
+
+      </script>
   </body>
 </html>

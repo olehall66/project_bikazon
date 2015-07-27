@@ -1,0 +1,20 @@
+body{
+  background-color:#ffffcc;
+}
+div {
+  min-height: 60px;
+}
+#header{
+  background-color:#ffeecc;
+}
+#welcome_header{
+  background-color:#ff3300;
+}
+
+#disp_img{
+  width:100%;
+}
+.main_box_style{
+  border:2px solid red;
+  background-color:white;
+}
